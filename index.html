@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fiche de révision DMN / FGE1 (hors partie 1.3)</title>
+  <style>
+    :root{
+      --bg:#0b0f14; --text:#e8eef6; --muted:#aab7c4;
+      --line:#223042; --accent:#7dd3fc; --accent2:#a78bfa; --warn:#fda4af;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; line-height:1.55; color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(125,211,252,.15), transparent 60%),
+                  radial-gradient(900px 500px at 80% 20%, rgba(167,139,250,.12), transparent 55%),
+                  var(--bg);
+    }
+    header{
+      padding:26px 18px 10px; border-bottom:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(15,22,33,.75), rgba(15,22,33,.25));
+      position:sticky; top:0; backdrop-filter: blur(10px); z-index:10;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:0 14px}
+    h1{font-size:22px;margin:0 0 6px}
+    .sub{color:var(--muted);font-size:13px;margin:0}
+    main{padding:18px 0 40px}
+    .grid{display:grid;grid-template-columns:1fr;gap:14px}
+    @media(min-width:980px){.grid{grid-template-columns:1fr 1fr}}
+    .card{
+      background: rgba(15,22,33,.85);
+      border:1px solid var(--line); border-radius:14px;
+      padding:14px 14px 12px; box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    .full{grid-column:1 / -1}
+    .card h2{font-size:16px;margin:0 0 10px}
+    .card h3{font-size:14px;margin:12px 0 6px;color:var(--accent)}
+    .card h4{font-size:13px;margin:10px 0 4px;color:var(--accent2)}
+    .pill{
+      display:inline-block; padding:3px 10px; border-radius:999px;
+      border:1px solid var(--line); background: rgba(125,211,252,.08);
+      font-size:12px; margin:6px 0 0;
+    }
+    ul,ol{margin:6px 0 0 18px}
+    li{margin:4px 0}
+    table{width:100%;border-collapse:collapse;margin:8px 0 0}
+    th,td{border:1px solid var(--line);padding:8px 10px;font-size:13px;vertical-align:top}
+    th{background: rgba(125,211,252,.08);text-align:left}
+    .eq{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      background: rgba(11,19,32,.9);
+      border:1px solid rgba(34,48,66,.9);
+      border-radius:10px; padding:10px 12px; margin:8px 0; overflow:auto;
+      font-size:13px; white-space:pre-wrap;
+    }
+    .note{
+      border-left:3px solid var(--accent);
+      padding:8px 10px; background: rgba(125,211,252,.06);
+      border-radius:10px; margin:10px 0 0; font-size:13px;
+    }
+    .warn{
+      border-left:3px solid var(--warn);
+      padding:8px 10px; background: rgba(253,164,175,.06);
+      border-radius:10px; margin:10px 0 0; font-size:13px;
+    }
+    details{
+      margin:8px 0 0; border:1px solid var(--line); border-radius:12px;
+      padding:8px 10px; background: rgba(15,22,33,.55);
+    }
+    summary{cursor:pointer; font-weight:600; list-style:none}
+    summary::-webkit-details-marker{display:none}
+    footer{
+      padding:16px 0 26px; color:var(--muted); border-top:1px solid var(--line);
+      margin-top:22px; font-size:12px;
+    }
+    .two-col{display:grid; grid-template-columns:1fr; gap:12px}
+    @media(min-width:900px){.two-col{grid-template-columns:1fr 1fr}}
+  </style>
+  <script>
+    window.MathJax = {tex:{inlineMath:[['\\(','\\)'],['$','$']]}, svg:{fontCache:'global'}};
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+
+<body>
+<header>
+  <div class="wrap">
+    <h1>Fiche de révision — DMN / FGE1</h1>
+    <p class="sub">Tout-en-un (formules + méthodes + constantes) — <b>hors partie 1.3</b> non au programme.</p>
+    <span class="pill">Constantes + Chimie (dont Slater) + Mécanique</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="grid">
+
+    <!-- CONSTANTES EN HAUT -->
+    <section class="card full">
+      <h2>📌 Constantes & conversions (à connaître)</h2>
+
+      <div class="two-col">
+        <div>
+          <h3>Constantes</h3>
+          <table>
+            <tr><th>Grandeur</th><th>Valeur</th><th>Unités</th></tr>
+            <tr><td>Pesanteur</td><td>\(g = 9.81\)</td><td>m·s⁻²</td></tr>
+            <tr><td>Charge élémentaire</td><td>\(e = 1.60\times 10^{-19}\)</td><td>C</td></tr>
+            <tr><td>Nombre d’Avogadro</td><td>\(N_A = 6.02\times 10^{23}\)</td><td>mol⁻¹</td></tr>
+            <tr><td>Rayon de Bohr</td><td>\(a_0 = 0.53\)</td><td>Å</td></tr>
+            <tr><td>1 Debye</td><td>\(1\,D = 3.33\times 10^{-30}\)</td><td>C·m</td></tr>
+          </table>
+        </div>
+
+        <div>
+          <h3>Conversions utiles</h3>
+          <table>
+            <tr><th>Conversion</th><th>Équivalence</th></tr>
+            <tr><td>Angström</td><td>\(1\,\text{Å} = 10^{-10}\,\text{m}\)</td></tr>
+            <tr><td>pm</td><td>\(1\,\text{pm} = 10^{-12}\,\text{m}\)</td></tr>
+            <tr><td>nm</td><td>\(1\,\text{nm} = 10^{-9}\,\text{m}\)</td></tr>
+            <tr><td>Å ↔ pm</td><td>\(1\,\text{Å} = 100\,\text{pm}\)</td></tr>
+            <tr><td>Litre</td><td>\(1\,\text{L} = 10^{-3}\,\text{m}^3\)</td></tr>
+            <tr><td>cm³</td><td>\(1\,\text{cm}^3 = 10^{-6}\,\text{m}^3\)</td></tr>
+            <tr><td>eV</td><td>\(1\,\text{eV} = 1.60\times 10^{-19}\,\text{J}\)</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="note">
+        Astuce unités : moments dipolaires en Debye → convertir en C·m si besoin ; longueurs de liaison souvent en pm (ou Å).
+      </div>
+    </section>
+
+    <!-- PARTIE I CHIMIE -->
+    <section class="card">
+      <h2>🧩 PARTIE I — Constitution de la matière (Chimie)</h2>
+
+      <h3>1) Structure de l’atome</h3>
+      <div class="eq">
+\(Z\) = nombre de protons
+\(A = Z + N\)
+\(N = A - Z\)
+      </div>
+
+      <h3>2) Modèle quantique & configuration électronique</h3>
+      <h4>Nombres quantiques</h4>
+      <ul>
+        <li>\(n\) : principal</li>
+        <li>\(l\) : secondaire (0 → \(n-1\))</li>
+        <li>\(m_l\) : magnétique (−l → +l)</li>
+        <li>\(m_s = \pm \frac{1}{2}\)</li>
+      </ul>
+
+      <h4>Capacités des sous-couches</h4>
+      <table>
+        <tr><th>Sous-couche</th><th>Électrons max</th></tr>
+        <tr><td>s</td><td>2</td></tr>
+        <tr><td>p</td><td>6</td></tr>
+        <tr><td>d</td><td>10</td></tr>
+        <tr><td>f</td><td>14</td></tr>
+      </table>
+
+      <h4>Règles à appliquer (explications)</h4>
+      <details open>
+        <summary>Principe de Pauli</summary>
+        <ul>
+          <li>Une orbitale (\(n,l,m_l\)) contient au maximum <b>2 électrons</b>.</li>
+          <li>Ils ont des spins opposés : \(m_s=+1/2\) et \(m_s=-1/2\).</li>
+          <li>Formulation « examen » : <b>deux électrons ne peuvent pas avoir les 4 nombres quantiques identiques</b>.</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Règle de Hund</summary>
+        <ul>
+          <li>Dans une sous-couche dégénérée (p, d...), on met d’abord <b>1 électron par orbitale</b>.</li>
+          <li>On maximise le nombre d’électrons célibataires, spins <b>parallèles</b>.</li>
+          <li>Exemple : \(2p^3\) = ↑ ↑ ↑ ; \(2p^4\) = ↑↓ ↑ ↑.</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Règle de Klechkowski (ordre de remplissage)</summary>
+        <ul>
+          <li>On remplit par ordre croissant de \(n+l\).</li>
+          <li>Si \(n+l\) identique, on remplit d’abord le plus petit \(n\).</li>
+          <li>Ordre typique : 1s → 2s → 2p → 3s → 3p → 4s → 3d → 4p → 5s → 4d → 5p → 6s → 4f → 5d → 6p → 7s ...</li>
+        </ul>
+      </details>
+
+      <h3>3) Modèle de Bohr (atomes hydrogénoïdes)</h3>
+      <div class="eq">
+Énergie : \(E_n = -13.6 \dfrac{Z^{*2}}{n^2}\) (eV)
+
+Rayon : \(r_n = \dfrac{n^2 a_0}{Z^*}\) avec \(a_0 = 0.53\,\text{Å}\)
+      </div>
+
+      <h3>4) Classification périodique</h3>
+      <ul>
+        <li>Énergie d’ionisation ↑ vers la droite et vers le haut</li>
+        <li>Électronégativité ↑ vers F</li>
+        <li>Rayon atomique ↑ vers le bas et la gauche</li>
+        <li>Atomes stables : sous-couches pleines (ex : \(p^6\), \(d^{10}\))</li>
+      </ul>
+
+      <h3>5) Liaisons chimiques (Δχ)</h3>
+      <div class="eq">
+\(\Delta \chi < 0.4\) : covalente apolaire
+\(0.4 < \Delta \chi < 1.7\) : covalente polaire
+\(\Delta \chi > 1.7\) : ionique
+      </div>
+
+      <h3>6) Lewis & VSEPR (avec angles)</h3>
+      <div class="note">
+Méthode : Lewis → compter domaines électroniques (liaisons + doublets libres) → type AX<sub>m</sub>E<sub>n</sub> → géométrie + angle.
+      </div>
+      <table>
+        <tr><th>Type VSEPR</th><th>Géométrie</th><th>Angle idéal</th><th>Commentaire</th></tr>
+        <tr><td>AX2</td><td>Linéaire</td><td>180°</td><td>2 domaines</td></tr>
+        <tr><td>AX3</td><td>Trigonale plane</td><td>120°</td><td>3 domaines</td></tr>
+        <tr><td>AX4</td><td>Tétraédrique</td><td>109.5°</td><td>4 domaines</td></tr>
+        <tr><td>AX2E</td><td>Coudée</td><td>&lt; 120°</td><td>doublet libre → angle réduit</td></tr>
+        <tr><td>AX3E</td><td>Pyramidale</td><td>&lt; 109.5°</td><td>doublet libre → angle réduit</td></tr>
+      </table>
+      <div class="warn">Les doublets non liants (E) repoussent plus que les liaisons (X) ⇒ ils diminuent les angles réels.</div>
+
+      <h3>7) Moment dipolaire</h3>
+      <div class="eq">
+Liaison : \(\mu = \delta\, e\, d\)
+
+Molécule : \(\vec{\mu}_{tot} = \sum \vec{\mu}_i\)
+
+Exemple NO\(_2^-\) : \(\mu_{tot} = 2\mu\cos\left(\dfrac{\alpha}{2}\right)\)
+      </div>
+
+      <h3>8) Interactions intermoléculaires (principes)</h3>
+      <details open>
+        <summary>Keesom (dipôle–dipôle)</summary>
+        <ul>
+          <li>Entre <b>molécules polaires</b> (\(\mu \neq 0\)).</li>
+          <li>Attraction entre pôle \(+\) et pôle \(−\) (orientation partielle).</li>
+          <li>Effets : Téb ↑, solubilité ↑ dans solvants polaires.</li>
+        </ul>
+      </details>
+      <details>
+        <summary>London (dispersion)</summary>
+        <ul>
+          <li>Présente <b>dans toutes</b> les molécules (même apolaires).</li>
+          <li>Dipôle instantané → dipôle induit → attraction.</li>
+          <li>Plus la molécule est grosse/polarisable → dispersion plus forte.</li>
+        </ul>
+      </details>
+      <details>
+        <summary>Liaison hydrogène (H-bond)</summary>
+        <ul>
+          <li>Condition : H lié à <b>N, O ou F</b> (donneur) + doublet libre sur N/O/F voisin (accepteur).</li>
+          <li>Effets : Téb ↑↑, viscosité ↑, solubilité dans l’eau ↑.</li>
+        </ul>
+      </details>
+      <div class="note">Classement utile : London &lt; Keesom &lt; Liaison H.</div>
+
+      <h3>9) Cristaux ioniques</h3>
+      <h4>Comptage dans une maille</h4>
+      <ul>
+        <li>Sommet : 1/8</li><li>Arête : 1/4</li><li>Face : 1/2</li><li>Centre : 1</li>
+      </ul>
+      <h4>Densité / compacité / stabilité</h4>
+      <div class="eq">
+Densité : \(\rho = \dfrac{N \times M}{N_A \times a^3}\)
+
+Compacité : \(C = \dfrac{\sum V_{ions}}{V_{maille}}\)
+
+Condition (structure type) : \(\dfrac{R^+}{R^-} \ge 0.225\)
+      </div>
+
+      <h3>10) Charge nucléaire effective — Méthode de Slater (CHIMIE)</h3>
+      <div class="eq">
+But : estimer \(Z^*\) ressenti par un électron : \(\boxed{Z^* = Z - \sigma}\)
+      </div>
+      <div class="warn"><b>Règle d’or :</b> l’électron étudié <b>ne s’écrante pas lui‑même</b> → on le retire du comptage.</div>
+
+      <h4>Regroupement (Slater)</h4>
+      <div class="eq">
+\((1s)\;|\;(2s,2p)\;|\;(3s,3p)\;|\;(3d)\;|\;(4s,4p)\;|\;\dots\)
+
+Électrons à droite : ne comptent pas.
+      </div>
+
+      <h4>Coefficients (électron ns/np)</h4>
+      <table>
+        <tr><th>Électrons écrantants</th><th>Contribution à \(\sigma\)</th></tr>
+        <tr><td>Même couche (ns, np)</td><td>0.35 par électron</td></tr>
+        <tr><td>Couche \(n-1\)</td><td>0.85 par électron</td></tr>
+        <tr><td>Couche \(n-2\) et moins</td><td>1.00 par électron</td></tr>
+      </table>
+      <div class="note">Cas particulier : pour 1s, l’autre électron 1s compte 0.30.</div>
+
+      <h4>Exemple (O, électron 2p)</h4>
+      <div class="eq">
+O : \(1s^2\,2s^2\,2p^4\), électron étudié = un 2p
+
+Même couche (2s + autres 2p) : \(5\times0.35=1.75\)
+Couche \(1s\) : \(2\times0.85=1.70\)
+
+\(\sigma=3.45\) ; \(Z^* = 8-3.45 = 4.55\)
+      </div>
+
+      <h4>Applications (avec Bohr)</h4>
+      <div class="eq">
+\(E_n = -13.6 \dfrac{Z^{*2}}{n^2}\) (eV)
+\(r_n = \dfrac{n^2 a_0}{Z^*}\)
+      </div>
+
+      <div class="note">Mention examen : méthode <b>approximative</b> (écrantage simplifié).</div>
+
+    </section>
+
+    <!-- PARTIE II MECANIQUE -->
+    <section class="card">
+      <h2>⚙️ PARTIE II — Mouvement & interactions (Mécanique)</h2>
+
+      <h3>1) Cinématique</h3>
+      <div class="eq">
+\(\vec{v} = \dfrac{d\vec{OM}}{dt}\)
+\(\vec{a} = \dfrac{d\vec{v}}{dt}\)
+      </div>
+
+      <h4>Mouvement circulaire uniforme</h4>
+      <div class="eq">
+\(v = \omega R\)
+\(a = \dfrac{v^2}{R}\)
+      </div>
+
+      <h3>2) Lois de Newton</h3>
+      <div class="eq">
+\(\sum \vec{F} = m\vec{a}\)
+      </div>
+      <h4>Forces usuelles</h4>
+      <ul>
+        <li>Poids : \(\vec{P} = m\vec{g}\)</li>
+        <li>Ressort : \(\vec{F} = -k(x-l_0)\,\vec{e_x}\)</li>
+        <li>Réaction normale : \(\vec{N}\)</li>
+      </ul>
+
+      <h3>3) Oscillateur masse–ressort (sans frottement)</h3>
+      <div class="eq">
+Équation : \(m\ddot{x} + k(x-l_{eq}) = 0\)
+
+Variable réduite : \(u=x-l_{eq} \Rightarrow \ddot{u} + \dfrac{k}{m}u = 0\)
+
+Pulsation propre : \(\omega_0 = \sqrt{\dfrac{k}{m}}\)
+
+Solution : \(u(t)=A\cos(\omega_0 t + \varphi)\)
+      </div>
+
+      <h3>4) Énergie / travail / puissance</h3>
+      <div class="eq">
+Énergie cinétique : \(E_c = \dfrac{1}{2}mv^2\)
+
+Énergie potentielle (pesanteur) : \(E_p = mgz\)
+Énergie potentielle (ressort) : \(E_p = \dfrac{1}{2}kx^2\)
+
+Théorème : \(\Delta E_c = \sum W(\vec{F})\)
+
+Travail (force constante) : \(W = \vec{F}\cdot\vec{AB}\)
+Puissance : \(P = \vec{F}\cdot\vec{v}\)
+      </div>
+
+    </section>
+
+  </div>
+
+  <footer>
+    <div class="wrap">
+      <div><b>Remarque</b> : fiche pensée pour réviser vite (définitions + méthodes + formules). Partie 1.3 exclue.</div>
+    </div>
+  </footer>
+</main>
+</body>
+</html>
